@@ -1,0 +1,13 @@
+list structure:
+
+first item, directory path (relative?)
+second item, list of files in that directory
+this exists in a list of the initial groups
+directory
+ex: groups[0][1][0]
+is the 1st golder in groups, accessing 
+the list of files in that folder, grabbing the first file
+
+to figure out: elder zhang as a deleted user messing up the program, improper results
+user interface of some sort, some user input
+figure out the saving all to one folder

@@ -1,0 +1,4 @@
+Replace \n whitetext with special character:
+False
+put files in home folder or all in one (home/one)
+home
