@@ -1,0 +1,6 @@
+to use this program, use google takeout to get your google chat info
+in the takeout folder, there should be a folder titled "groups"
+copy the contents of that folder into the groups folder in this script folder
+after the program has run, each folder in groups should be renamed to the participants of that chat
+and there should be a new file in each titled "output.txt"
+that file contains the parsed messages
