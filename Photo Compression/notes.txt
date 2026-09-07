@@ -1,0 +1,3 @@
+32, 32
+8, 8 * 4
+loop r and g for image size divided by blue ratio
