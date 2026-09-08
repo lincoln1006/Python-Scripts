@@ -74,6 +74,7 @@ def UI():
         curDirCont = Path(curDirPath)
         curDirCont = [x for x in curDirCont.iterdir()]
         imagesDirInd = findPath(curDirCont, "images")
+        print(imagesDirInd)
         imagesDirPath = curDirCont[imagesDirInd]
         images = [x for x in imagesDirPath.iterdir()]
     getCompRatio = False

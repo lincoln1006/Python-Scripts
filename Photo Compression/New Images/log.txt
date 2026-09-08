@@ -1,0 +1,9 @@
+original path:C:\Users\lphof\Documents\github\Python-Scripts\Photo Compression\images\red.jpg
+new image path: C:\Users\lphof\Documents\github\Python-Scripts\Photo Compression\New Images\red.jpg
+original image size: 612 x 408
+new image size: 306 x 204
+compression rate: 
+    width: 2
+    height: 2
+
+time to complete 1 photos: 0.175 seconds
