@@ -3,6 +3,15 @@ import os
 from compress import compressImage
 from PIL import Image
 import time
+import platform
+operatingSystem = platform.platform()
+if operatingSystem[0:5] == "Linux":
+    isLinux = True
+    pathChar = "/"
+else:
+    isLinux = False
+    pathChar = "\\"
+#test
 
 def findPath(dir: list, name: str):
     for i in range(len(dir)):
@@ -12,7 +21,7 @@ def findPath(dir: list, name: str):
         return None
 
 def getOrgFileName(filePath: Path) -> str:
-    return str(filePath).split("\\")[-1]
+    return str(filePath).split(pathChar)[-1]
 
 def main():
     start = time.time()
@@ -23,7 +32,7 @@ def main():
     imagesDirPath = curDirCont[imagesDirInd]
     images = [x for x in imagesDirPath.iterdir()]
 
-    newImgPath = Path(str(curDirPath) + "\\New Images")
+    newImgPath = Path(str(curDirPath) + f"{pathChar}New Images")
     f = open("log.txt", "w")
     try:
         Path.mkdir(newImgPath)
@@ -36,7 +45,7 @@ def main():
         compRateWidth = 8
         compRateHeight = 8
         newImg = compressImage(orgImage, compRateWidth, compRateHeight)
-        newPath = Path(str(newImgPath) + "\\" + getOrgFileName(imgPath))
+        newPath = Path(str(newImgPath) + pathChar + getOrgFileName(imgPath))
         newImg.save(newPath)
         logtxt = f"""original path:{imgPath}
 new image path:{newPath}
@@ -62,10 +71,10 @@ def UI():
     try:
         imagesPath = Path(imagesPath)
         images = [x for x in imagesPath.iterdir()]
-        splitPath = str(imagesPath).split("\\")
+        splitPath = str(imagesPath).split(pathChar)
         pathstr = ""
         for i in range(len(splitPath) -1):
-            pathstr += splitPath[i] + "\\"
+            pathstr += splitPath[i] + pathChar
         curDirPath = pathstr[:-1]
         print(curDirPath)
     except Exception as e:
@@ -88,7 +97,7 @@ def UI():
             print("invalid input")
     getCompRatio = True
     compRateWidth, compRateHeight = x, y
-    newImgPath = Path(str(curDirPath) + "\\New Images")
+    newImgPath = Path(str(curDirPath) + f"{pathChar}New Images")
     print(newImgPath)
     try:
         Path.mkdir(newImgPath)
@@ -97,7 +106,7 @@ def UI():
     except Exception as error:
         print(f"error: {error}")
 
-    logPath = Path(str(newImgPath) + "\\log.txt")
+    logPath = Path(str(newImgPath) + f"{pathChar}log.txt")
     try:
         f = open(str(logPath), "w")
     except FileNotFoundError:
@@ -107,7 +116,7 @@ def UI():
     for imgPath in images:
         orgImage = Image.open(imgPath)
         newImg = compressImage(orgImage, compRateWidth, compRateHeight)
-        newPath = Path(str(newImgPath) + "\\" + getOrgFileName(imgPath))
+        newPath = Path(str(newImgPath) + pathChar + getOrgFileName(imgPath))
         newImg.save(newPath)
         logtxt = f"""original path:{imgPath}
 new image path: {newPath}
