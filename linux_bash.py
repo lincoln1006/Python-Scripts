@@ -1,6 +1,6 @@
 import subprocess
 import time
-subprocess.run("sh", "network_local.sh", capture_output=False)
+subprocess.run(["./network_list.sh"])
 outputRead = False
 attempts = 0
 while outputRead == False:

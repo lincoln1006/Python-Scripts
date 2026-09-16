@@ -1,9 +1,25 @@
-original path:C:\Users\lphof\Documents\github\Python-Scripts\Photo Compression\images\red.jpg
-new image path: C:\Users\lphof\Documents\github\Python-Scripts\Photo Compression\New Images\red.jpg
+original path:/home/pi/Python-Scripts/Photo Compression/images/red.jpg
+new image path: /home/pi/Python-Scripts/Photo Compression/New Images/red.jpg
 original image size: 612 x 408
-new image size: 306 x 204
+new image size: 38 x 25
 compression rate: 
-    width: 2
-    height: 2
+    width: 16
+    height: 16
 
-time to complete 1 photos: 0.175 seconds
+original path:/home/pi/Python-Scripts/Photo Compression/images/red2.jpg
+new image path: /home/pi/Python-Scripts/Photo Compression/New Images/red2.jpg
+original image size: 612 x 408
+new image size: 38 x 25
+compression rate: 
+    width: 16
+    height: 16
+
+original path:/home/pi/Python-Scripts/Photo Compression/images/red3.jpg
+new image path: /home/pi/Python-Scripts/Photo Compression/New Images/red3.jpg
+original image size: 477 x 642
+new image size: 29 x 40
+compression rate: 
+    width: 16
+    height: 16
+
+time to complete 3 photos: 7.806 seconds
