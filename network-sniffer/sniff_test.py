@@ -11,7 +11,7 @@ except (socket.error, msg):
 
 # receive a packet
 with open("unpacked_log.txt", "w") as f:
-	for i in range(1000):
+	for i in range(100):
 		packet = s.recvfrom(65565)
 		timerecv = time.time()
 		
