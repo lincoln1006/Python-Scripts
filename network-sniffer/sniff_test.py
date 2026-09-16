@@ -12,6 +12,7 @@ except (socket.error, msg):
 # receive a packet
 curtime = time.time()
 numPacketsToReceive = 20
+i = 0
 with open("unpacked_log.txt", "w") as f:
 	while (i < numPacketsToReceive) and (time.time() - curtime) < 10:
 		packet = s.recvfrom(65565)
