@@ -6,10 +6,6 @@ Device: 3C:A9:AB:7A:58:B2 (Unknown)
 Mac Address: 3C:A9:AB:7A:58:B2
  IP Address: 192.168.0.4
 
-Device: 8E:6D:2A:9A:C3:CA (Unknown)
-Mac Address: 8E:6D:2A:9A:C3:CA
- IP Address: 192.168.0.49
-
 Device: FE:F0:95:34:40:95 (Unknown)
 Mac Address: FE:F0:95:34:40:95
  IP Address: 192.168.0.84
@@ -18,8 +14,8 @@ Device: 08:F9:7E:DA:08:69 (Unknown)
 Mac Address: 08:F9:7E:DA:08:69
  IP Address: 192.168.0.85
 
-Device: 2C:CF:67:85:00:A3 (Raspberry Pi (Trading))
-Mac Address: 2C:CF:67:85:00:A3
+Device: Pi (Trading))
+Mac Address: Pi
  IP Address: 192.168.0.103
 
 Device: 1C:30:08:82:49:F7 (Hui Zhou Gaoshengda Technology)
