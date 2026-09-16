@@ -22,7 +22,7 @@ while outputRead == False:
         print("script failed, exiting now")
         exit()
 text = f.readlines()
-textSplit = text.split(" ")
+textSplit = text[0].split(" ")
 f.close()
 i = 10
 newDevice = False
@@ -48,7 +48,7 @@ while i < len(textSplit) - 1:
     except:
         break
 with open("output.txt", "w") as f:
-    for val in devices:
-        f.write(f"Device: {val.name}\nMac Address: {val.mac}\n IP Address: {val.ip}\n")
+    for i in range(len(devices) - 1):
+        f.write(f"Device: {devices[i].name}\nMac Address: {devices[i].mac}\n IP Address: {devices[i].ip}\n\n")
 
 
