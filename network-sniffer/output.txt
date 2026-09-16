@@ -2,6 +2,10 @@ Device: 68:7F:F0:0A:E5:E8 (TP-Link Limited)
 Mac Address: 68:7F:F0:0A:E5:E8
  IP Address: 192.168.0.1
 
+Device: 3C:A9:AB:7A:58:B2 (Unknown)
+Mac Address: 3C:A9:AB:7A:58:B2
+ IP Address: 192.168.0.4
+
 Device: FE:F0:95:34:40:95 (Unknown)
 Mac Address: FE:F0:95:34:40:95
  IP Address: 192.168.0.84
@@ -29,10 +33,6 @@ Mac Address: 48:E1:5C:82:2F:45
 Device: 26:51:40:82:08:4A (Unknown)
 Mac Address: 26:51:40:82:08:4A
  IP Address: 192.168.0.174
-
-Device: 9C:3E:53:85:12:EA (Apple)
-Mac Address: 9C:3E:53:85:12:EA
- IP Address: 192.168.0.182
 
 Device: 04:F7:78:93:78:4B (Sony Interactive Entertainment)
 Mac Address: 04:F7:78:93:78:4B

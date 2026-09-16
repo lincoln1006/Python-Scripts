@@ -10,7 +10,7 @@ except (socket.error, msg):
 
 # receive a packet
 with open("unpacked_log.txt", "w") as f:
-	while True:
+	for i in range(1000):
 		packet = s.recvfrom(65565)
 		
 		#packet string from tuple
