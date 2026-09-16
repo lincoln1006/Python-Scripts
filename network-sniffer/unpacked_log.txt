@@ -1,0 +1,4 @@
+Version : 4 IP Header Length : 5 TTL : 128 Protocol : 6 Source Address : 192.168.0.85 Destination Address : 192.168.0.195
+Source Port : 56831 Dest Port : 22 Sequence Number : 2793169132 Acknowledgement : 846184806 TCP header length : 5
+b"\xab\xe9-\xe9{L!4\x01\x93u%\xc7A\rN\x1a\xc1oP\x83m''\x93\x18S\xae\xa3Mc\xe3\x02\x1a\xac\x7f"
+
