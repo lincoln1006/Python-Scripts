@@ -10,11 +10,13 @@ except (socket.error, msg):
 	sys.exit()
 
 # receive a packet
+curtime = time.time()
+numPacketsToReceive = 20
 with open("unpacked_log.txt", "w") as f:
-	for i in range(100):
+	while (i < numPacketsToReceive) and (time.time() - curtime) < 10:
 		packet = s.recvfrom(65565)
 		timerecv = time.time()
-		
+		i += 1
 		#packet string from tuple
 		packet = packet[0]
 		
