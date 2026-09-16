@@ -1,5 +1,6 @@
 import socket, sys
 from struct import *
+import time
 
 #create an INET, STREAMing socket
 try:
@@ -12,6 +13,7 @@ except (socket.error, msg):
 with open("unpacked_log.txt", "w") as f:
 	for i in range(1000):
 		packet = s.recvfrom(65565)
+		timerecv = time.time()
 		
 		#packet string from tuple
 		packet = packet[0]
@@ -54,7 +56,8 @@ with open("unpacked_log.txt", "w") as f:
 		
 		#get data from the packet
 		data = packet[h_size:]
-				
+
+		f.write(timerecv)
 		f.write(x + "\n")
 		f.write(y + "\n")
 		f.write(str(data))
