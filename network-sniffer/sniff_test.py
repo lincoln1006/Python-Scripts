@@ -57,7 +57,7 @@ with open("unpacked_log.txt", "w") as f:
 		#get data from the packet
 		data = packet[h_size:]
 
-		f.write(timerecv)
+		f.write(str(timerecv))
 		f.write(x + "\n")
 		f.write(y + "\n")
 		f.write(str(data))
