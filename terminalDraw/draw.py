@@ -1,7 +1,7 @@
 import math
 import os
 import time
-
+from obj import OBJ
 
 global sz
 global pixels, emptyScreenPixels
@@ -64,8 +64,8 @@ def draw():
     os.system("cls")
     print(pixelBuffer)
 
-def plotLineLow(x0, y0, x1, y1):
-    
+def plotLineLow(x0, y0, x1, y1) -> list:
+    points = []
     #
     #using bresenham line algorithm
     dx = x1 - x0
@@ -78,16 +78,18 @@ def plotLineLow(x0, y0, x1, y1):
     y = y0
 
     for x in range(x0, x1):
-        pixels[int(y + yOffset)][int(x + xOffset)] = dot
+        points.append((x/sz, y/sz))
+        #pixels[int(y + yOffset)][int(x + xOffset)] = dot
         #f.write(f"x: {x} y: {y}\n")
         if D > 0:
             y = y + yi
             D = D + (2 * (dy - dx))
         else:
             D = D + 2*dy
+    return points
 
 def plotLineHigh(x0, y0, x1, y1):
-    
+    points = []
     dx = x1 - x0
     dy = y1 - y0
     xi = 1
@@ -97,27 +99,45 @@ def plotLineHigh(x0, y0, x1, y1):
     D = (2 * dx) - dy
     x = x0
     for y in range(y0, y1):
-        pixels[int(y+yOffset)][int(x+xOffset)] = dot
+        points.append((x/sz, y/sz))
+        #pixels[int(y+yOffset)][int(x+xOffset)] = dot
         #f.write(f"x: {x} y: {y}\n")
         if D > 0:
             x = x + xi
             D = D + (2 * (dx - dy))
         else:
             D = D + 2*dx
+    return points
 
-def drawLine(p1, p2):
+def drawLine(p1, p2, drawFace=False):
     x0, y0 = int(p1[0] * sz), int(p1[1] * sz)
     x1, y1 = int(p2[0] * sz), int(p2[1] * sz)
+    #input(((x0, y0), (x1, y1)))
     if abs(y1 - y0) < abs(x1 - x0):
         if x0 > x1:
-            plotLineLow(x1, y1, x0, y0)
+            points = plotLineLow(x1, y1, x0, y0)
         else:
-            plotLineLow(x0, y0, x1, y1)
+            points = plotLineLow(x0, y0, x1, y1)
     else:
         if y0 > y1:
-            plotLineHigh(x1, y1, x0, y0)
+            points = plotLineHigh(x1, y1, x0, y0)
         else:
-            plotLineHigh(x0, y0, x1, y1)
+            points = plotLineHigh(x0, y0, x1, y1)
+    if drawFace == False:
+        for point in points:
+            pixels[int((point[1]*sz)+yOffset)][int((point[0]*sz)+xOffset)] = dot
+    else:
+        return points
+
+def drawTriangle(points):
+    p1, p2, p3 = points[0], points[1], points[2]
+    points = drawLine(p1, p2, drawFace=True)
+    input(points)
+    for point in points:
+        x = point[0]
+        y = point[1]
+        drawLine(p3, (x, y))
+
 
 def project(points: list) -> list:
     translatedPoints = []
@@ -134,39 +154,32 @@ def translateZ(points: list, dz) -> list:
         translatedPoints.append((p[0], p[1], p[2] + dz))
     return translatedPoints
 
-windowW = 128
-windowH = 128
+
+
+windowW = 256
+windowH = 256
 xOffset = int(windowW / 2 - 1)
 yOffset = int(windowH / 2 -1)
 sz = int((windowW + windowH) / 8)
 emptyPixel = "  "
 dot = "##"
 pixels, emptyScreenPixels = makePixelBuffer(windowW, windowH)
-
-"""
-cubePoints = [(0, 0, 0),(1, 0, 0),(0, 1, 0),(0, 0, 1),(1, 1, 0),(1, 0, 1),(0, 1, 1),(1, 1, 1)]
-cubeLines = [(0, 1), (2, 3), (4, 5), (6, 7),
-             (0, 2), (1, 4), (3, 6), (5, 7),
-             (0, 3), (1, 5), (2, 6), (4, 7)]
-cube = [cubePoints, cubeLines]
-"""
-
-cube = importObj("square.obj")
-f = open("log.txt", "w")
+obj = OBJ("square.obj")
 angle = 0
 dz = 4
 FPS = 60
 while True:
     cos = math.cos(angle)
     sin = math.sin(angle)
-    points = cube[0]
-
+    points = obj.points
     
     points = rotateXZ(points, angle)
     points = translateZ(points, dz)
     points = project(points)
-    for i in range(len(cube[1])):
-        drawLine(points[cube[1][i][0]], points[cube[1][i][1]])
+    for i in range(len(obj.lines)):
+        drawLine(points[obj.lines[i][0]], points[obj.lines[i][1]])
+    for face in obj.faces:
+        drawTriangle((obj.points[face[0]], obj.points[face[1]], obj.points[face[2]]))
     """
     translatedPoints = translate(cube[0], dz)
     rotatedPoints = rotateXZ(translatedPoints, angle)
